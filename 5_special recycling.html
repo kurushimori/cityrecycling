@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">  
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<title></title>
+<link rel="stylesheet" href="css/style.css" type="text/css">
+<script src="js/jquery-1.12.4.min.js"></script>
+
+</head>
+
+<body>
+<div class="baox">
+  <div class="nav">
+    <ul>
+      <li><a href="1_homepage.html">HOME</a></li>
+      <li><a href="3_recycling map1_location.html">LOCATION</a></li>
+      <li><a href="4_recycling map2_special.html">SEASONAL PROGRAM</a></li>
+      <li><a href="5_special recycling.html">EVENTS</a></li>
+    </ul>
+  </div>
+
+<div class="sevenbox">
+  <div class="qhbox">
+    <div class="qhbox_nr qhbox_nr1"></div>
+    <div class="qhbox_nr qhbox_nr2"></div>
+    <div class="qhbox_nr qhbox_nr3"></div>
+    <div class="qhbox_nr qhbox_nr4"></div>
+  </div>
+  <div class="btn_title1">
+    <a href="6_About us.html">
+    <h2>CITY RECYCLING</h2>
+    <p>IN CHARLOTTESVILLE</p>
+    </a>
+  </div>
+
+  <div class="gntb">
+    <ul>
+      <li><a href=""><img src="images/twitter.png"/></a></li>
+      <li><a href=""><img src="images/facebook.png"/></a></li>
+      <li><a href=""><img src="images/home.png"/></a></li>
+      <li><a href=""><img src="images/qa.png"/></a></li>
+    </ul>
+  </div>
+  <div class="dbnr">
+    <ul>
+      <li>
+        <div class="dbnr1">
+          <p>CITY MARKET <br />
+test word test word test word<br />
+test word test word test word<br />
+test word test word test word<br />
+test word test word test word<br />
+test word test word test word</p>
+        </div>
+      </li>
+      <li><div class="dbnr2">
+          <p>Book Bin at McIntire <br />
+test word test word test word<br />
+test word test word test word<br />
+test word test word test word<br />
+test word test word test word<br />
+test word test word test word</p>
+        </div></li>
+      <li><div class="dbnr3">
+          <p>Oyster Shell Recycling<br />
+test word test word test word<br />
+test word test word test word<br />
+test word test word test word<br />
+test word test word test word<br />
+test word test word test word</p>
+        </div></li>
+      <li><div class="dbnr4">
+          <p>Holiday Special Aluminum Bervage Cans <br />
+test word test word test word<br />
+test word test word test word<br />
+test word test word test word<br />
+test word test word test word<br />
+test word test word test word</p>
+        </div></li>
+    </ul>
+  </div>
+</div>
+<script type="text/javascript">
+  $(".sevenbox .dbnr li").each(function(index){
+    $(this).hover(function(){
+      $(".on").removeClass("on");
+      $(this).addClass("on");
+      $(".sevenbox .qhbox .qhbox_nr:eq("+index+")").show().siblings().hide();
+    });
+  });
+</script>
+</body>
+</html>

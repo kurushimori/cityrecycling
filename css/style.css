@@ -6,10 +6,9 @@ body{
 	padding:0px; 
 	font-size:18px;
 	font-family:'Lato', sans-serif;
-	color:#5AC5D9;
-	line-height:1; 
+	color:#5AC5D9; 
 	background:#FFF; 
-	min-width: 1400px; }
+	min-width: 2px; }
 
 ul,li,dl,dd,dt,p,h1,h2,h3,h4,h5,h6,ol,form,input{ 
 	margin:0px; 
@@ -91,7 +90,7 @@ em,i { font-style: normal; }
 	color: #007AFF;}
 
 .wynr{
-	padding: 30px 5%;
+	padding: 30px 10%;
 	overflow: hidden;}
 
 .wznr_left{
@@ -99,17 +98,18 @@ em,i { font-style: normal; }
 	width:30%;}
 
 .btnr{
-	padding-bottom: 150px;}
+	padding-top: 150px;}
 
 .btnr h2{
 	font-size: 38px; 
 	color: #5AC5D9; 
 	padding-bottom: 150px;}
 
-.btnr  p{
+.btnr p{
 	font-size: 28px;
 	color: #5AC5D9; 
-	opacity: 0.6;}
+	opacity: 0.6;
+	padding-bottom: -100px;}
 
 .btxq{
 	padding: 60px 30px 120px 30px; 
@@ -120,7 +120,7 @@ em,i { font-style: normal; }
 
 .btxq p{
 	color: #fff;f
-	ont-size: 22px; 
+	font-size: 35px; 
 	line-height: 30px;}
 
 .wynr a:hover p{
@@ -128,10 +128,10 @@ em,i { font-style: normal; }
 
 .wznr_right{
 	float: right;
-	width:65%;}
+	width:60%;}
 
 .wznr_right img{
-	width:120%;}
+	width:110%;}
 
 /*==2-subhomepage==*/
 .btnr_tow{

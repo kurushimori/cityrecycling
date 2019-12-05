@@ -36,18 +36,21 @@ var mapZoom = 12.25;
 // See example tutorial at https://docs.mapbox.com/help/tutorials/choropleth-studio-gl-pt-2/#create-arrays-of-intervals-and-colors
 
     var layers = [ // an array of the possible values you want to show in your legend
-        'City Market', // Civic Spaces.png
-        'Book Bin at McIntire', // Community Park.png
-        'Oyster Shell Recycling', // Neighborhood Park.png
-        'Holiday Aluminum Can',
+        'Bus Stop', // Civic Spaces.png
+        'Bike Lanes', // Community Park.png
+        'parking', // Neighborhood Park.png
+        'Parks',
+        'Zone',
+
 
     ];
 
     var colors = [ // an array of the color values for each legend item
-        '#FF5A5E',
-        '#FF6D5A',
-        '#FF865A',
-        '#FFA65A',
+        '#FAA3A4',
+        '#FF8080',
+        '#A4E4FC',
+        '#BCF1F9',
+        '#E3F2FB',
 
     ];
 
@@ -80,7 +83,7 @@ var mapZoom = 12.25;
 
         } else {    // what shows up in the info window if you are NOT hovering over a park
 
-            $('#info-window-body').html('<p>Hover over a park or click on a bus stop to find your Recycling location.');
+            $('#info-window-body').html('<p>Find the most convinient place for daily recycling! Click on any bottom to find related parking and transportation information.');
             
         }
 
@@ -140,10 +143,10 @@ var mapZoom = 12.25;
         // layerMachineName is the layer name as written in your Mapbox Studio map layers panel
         // layerDisplayName is the way you want the layer's name to appear in the layers control on the website
         ['cat bus stop', 'Bus Stops'],                      // layers[0]
-        ['cville-parks', 'Parks'],                              // layers[1][1] = 'Parks'
-        ['bicycle lane', 'Bike Lanes'],     
-        ['cville-bus-stops-heatmap', 'Bus Stop Heatmap'],
-        ['background', 'Map background']
+        ['bicycle lane', 'Bike Lanes'],                              // layers[1][1] = 'Parks'
+        ['parking', 'parking'],     
+        ['park', 'Parks'],
+        ['zone1', 'Zone']
         // add additional live data layers here as needed
     ]; 
 
@@ -210,41 +213,12 @@ var mapZoom = 12.25;
     // A JavaScript object containing all of the data for each site "chapter" (the sites to zoom to while scrolling)
     var chapters = {
         'darden-towe': {
-            name: "City Market",
-            description: "Ut nisl quam, fringilla efficitur elementum in, congue vel mi. Nullam consequat pharetra nibh, non accumsan nisl cursus sed. Pellentesque at ex lacus. Ut fringilla nunc id leo maximus ullamcorper. Donec volutpat placerat accumsan. Nulla id luctus diam. Aliquam tincidunt pulvinar mattis. Donec tempor, massa vel vehicula feugiat, diam sem suscipit nisi, eu tempor turpis lorem ac ipsum. Proin quis lectus mattis enim luctus faucibus sit amet vel metus. Etiam luctus nunc eget velit vestibulum posuere. Maecenas enim velit, elementum a suscipit vel, bibendum in odio. Nunc porta, eros nec vehicula pretium, tellus sapien fermentum risus, a pulvinar elit libero ut nisi. Nunc interdum lacus eu ornare dapibus. Suspendisse vitae diam eu turpis venenatis tempor. Ut sodales vel ex finibus facilisis. Nunc hendrerit, augue eget vulputate pellentesque, nibh erat imperdiet justo, id iaculis risus sem commodo urna.",
-            imagepath: "img/CityMarket.jpg",
-            bearing: 0,
-            center: [ -78.450021, 38.042260],
-            zoom: 15.20,
-            pitch: 60
+            name: "Current Recycling Center",
+            description: "Sustainable waste management helps prevent the emission of many greenhouse gases and water pollutants, saves energy, supplies valuable raw materials to industry, creates jobs, stimulates the development of greener technologies, conserves resources for our children's future, and reduces the need for new landfills and combustors.Critical goals for overall waste reduction are conservation and reuse. When materials are kept out of the waste stream entirely, or are reused to make new products, less energy and resources are needed. Buying products which have recycled content in them is the 'other half' of collecting items to be recycled. The City of Charlottesville's curbside recycling service is single-stream recycling and is processed in a recyclables-only facility (also known as a materials recovery facility or MRF). Recyclable materials are collected in a separate bin, provided by the City, than other waste and curbside trash.(Refer: https://www.charlottesville.org/community/community-initiatives/a-green-city/sustainable-waste-management)",
+            imagepath: "img/5-5.jpg",
+
         },
-        'mcguffey-park': {
-            name: "Book Bin at McIntire",
-            description: "Aliquam mollis consequat libero, at egestas mi facilisis in. Maecenas sed porta arcu, nec mattis ligula. Sed a porta arcu. Aliquam vel nulla ac orci volutpat ullamcorper. Duis quis auctor urna. Duis id felis vel velit sagittis bibendum. Praesent rutrum velit vel est iaculis, et viverra sapien placerat. Suspendisse potenti. In interdum eu lorem ac cursus. Integer pulvinar lacus nec metus consequat vehicula. Aliquam efficitur vitae neque sed aliquam. Fusce interdum tempor neque vel interdum. Praesent dapibus sollicitudin arcu id finibus. Mauris risus magna, egestas in tristique et, egestas id arcu. Proin leo urna, sollicitudin non mattis in, tempor non nisi. Praesent commodo nibh sit amet dapibus egestas.",
-            imagepath: "img/Book Bin at McIntire.png",
-            bearing: 0,
-            center: [ -78.481707, 38.033021],
-            zoom: 17.18,
-            pitch: 0
-        },
-        'mcintire-park': {
-            name: "Oyster Shell Recycling",
-            description: "Fusce iaculis nulla ut augue posuere, sit amet vestibulum quam elementum. Integer quis varius sem. Mauris fermentum tempus congue. Nulla facilisi. Vestibulum congue cursus tempor. Sed sit amet venenatis magna. Duis fermentum ligula eget auctor eleifend. Aenean ullamcorper arcu et diam pharetra, a pretium lectus porttitor. Donec non lacinia est. Nullam nec felis turpis. Curabitur hendrerit porta dolor, vitae vehicula est dictum id. Ut sollicitudin lectus est, et egestas felis tempus eu. Sed at dictum ex. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam et diam rutrum orci placerat euismod quis vitae dui. Praesent aliquam, quam ac suscipit laoreet, metus nulla mattis justo, et egestas lectus eros ac nulla.",
-            imagepath: "img/McIntire Park.jpg",
-            bearing: 20,
-            center: [ -78.475470, 38.047131],
-            zoom: 15,
-            pitch: 50
-        },
-        'rivanna-river': {
-            name: "Holiday Special Aluminum",
-            description: "Aenean rutrum finibus ex, quis mollis ante eleifend in. Vestibulum faucibus augue tellus, ac auctor tellus maximus sit amet. Nulla quis rutrum felis. Nullam a facilisis mi, in pretium orci. Vestibulum tempus odio et accumsan lacinia. Duis tempus, dolor sit amet tristique tempus, nisl neque tristique lacus, quis viverra est risus id quam. Donec condimentum massa vitae dui consectetur vehicula. Vivamus interdum nisi sed blandit fermentum. Proin a magna et est varius euismod non quis turpis. Cras rhoncus, nulla non faucibus vestibulum, felis nunc finibus nisi, dictum sollicitudin nibh leo non lorem. Donec ut nulla id nunc elementum luctus. Fusce sed justo ac metus pretium auctor ut eget magna. Vestibulum rhoncus nibh sit amet varius tincidunt.",
-            imagepath: "img/Rivanna River.jpg",
-            bearing: 0,
-            center: [ -78.458309, 38.034810],
-            zoom: 16.13,
-            pitch: 25
-        }
+
     };
 
     console.log(chapters['darden-towe']['name']);
